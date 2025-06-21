@@ -1,73 +1,98 @@
-# Welcome to your Lovable project
 
-## Project info
+# 🎙️ Echoid Frontend
 
-**URL**: https://lovable.dev/projects/087869b4-8add-4b37-bad5-5db5ca7b16fb
+**Echoid** is a voice generation platform that lets users create personalized audio from text — complete with emotion and voice cloning. This is the frontend repo, built with **Next.js**, **Tailwind CSS**, and powered by a FastAPI backend.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🚀 Features
 
-**Use Lovable**
+- 🎤 Text-to-speech conversion with custom voices  
+- 😭 Emotion-based tone modulation via AI  
+- 👤 User profiles to manage saved voice styles  
+- 🌐 Fully responsive frontend with beautiful UI  
+- ⚡ Fast and lightweight with Vite + Next.js
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/087869b4-8add-4b37-bad5-5db5ca7b16fb) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tech Stack
 
-**Use your preferred IDE**
+- **Framework**: [Next.js](https://nextjs.org) + [Vite](https://vitejs.dev)  
+- **Styling**: [Tailwind CSS](https://tailwindcss.com)  
+- **Linting**: ESLint & Prettier  
+- **Build Tool**: [Bun](https://bun.sh) / npm  
+- **Backend**: Connects to [Echoid Backend](https://github.com/YOUR_USERNAME/echoid-backend)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 📦 Installation
 
-Follow these steps:
+1. Clone this repo:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/echoid-frontend.git
+   cd echoid-frontend
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. Install dependencies:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+   ```bash
+   bun install
+   # or
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   bun dev
+   # or
+   npm run dev
+   ```
+
+4. Visit [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🌐 Backend Setup
+
+Make sure the FastAPI backend is running. Clone and run it from:
+➡️ [`echoid-backend`](https://github.com/YOUR_USERNAME/echoid-backend)
+
+---
+
+## 🧠 Folder Structure
+
+```
+echoid-frontend/
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── pages/          # Next.js pages
+│   ├── styles/         # Tailwind/global styles
+│   └── utils/          # Helper functions
+├── public/             # Static files
+├── tailwind.config.ts
+├── tsconfig.json
+└── vite.config.ts
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## ✅ TODO
 
-**Use GitHub Codespaces**
+* [ ] Add Emotion Selector UI
+* [ ] Connect frontend with API
+* [ ] Add loading states and feedback
+* [ ] Deploy on Vercel
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 👤 Author
 
-This project is built with:
+Made with ❤️ by [Aradhye Swarup](https://github.com/cj-aradhye)
+Built for the project: **Echoid**
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/087869b4-8add-4b37-bad5-5db5ca7b16fb) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Let me know if you’d like a more **funny**, **minimal**, or **technical** version — or if you want deployment instructions (Vercel, Netlify, etc.) added!
+```
