@@ -93,6 +93,3 @@ Made with ❤️ by [Aradhye Swarup](https://github.com/cj-aradhye)
 Built for the project: **Echoid**
 
 ---
-
-Let me know if you’d like a more **funny**, **minimal**, or **technical** version — or if you want deployment instructions (Vercel, Netlify, etc.) added!
-```
