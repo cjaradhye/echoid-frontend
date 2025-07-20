@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import FileUpload from './FileUpload';
 import EmotionPicker from './EmotionPicker';
 import AudioOutput from './AudioOutput';
+import { modifyTextWithEmotion, generateAudio } from '@/lib/api';
 
 const Echoid: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File>();
@@ -12,6 +13,8 @@ const Echoid: React.FC = () => {
   const [selectedEmotion, setSelectedEmotion] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [hasOutput, setHasOutput] = useState(false);
+  const [audioOutputUrl, setAudioOutputUrl] = useState<string>('');
+  const [modifiedText, setModifiedText] = useState<string>('');
 
   const handleGenerate = async () => {
     if (!selectedFile || !inputText || !selectedEmotion) {
@@ -20,11 +23,30 @@ const Echoid: React.FC = () => {
 
     setIsGenerating(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsGenerating(false);
+    try {
+      // First, modify the text with emotion using Gemini API
+      const modifiedText = await modifyTextWithEmotion(inputText, selectedEmotion);
+      setModifiedText(modifiedText);
+      console.log('Original text:', inputText);
+      console.log('Modified text with emotion:', modifiedText);
+
+      // Then, send the modified text and audio file to FastAPI backend
+      const audioBlob = await generateAudio(modifiedText, selectedFile);
+      
+      // Create a URL for the audio blob to play
+      const audioUrl = URL.createObjectURL(audioBlob);
+      
+      // Store the audio URL for the AudioOutput component
+      setAudioOutputUrl(audioUrl);
       setHasOutput(true);
-    }, 3000);
+      
+      console.log('Audio generation successful');
+    } catch (error) {
+      console.error('Error generating audio:', error);
+      // You might want to show an error message to the user here
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   const isReadyToGenerate = selectedFile && inputText.trim() && selectedEmotion;
@@ -143,7 +165,8 @@ const Echoid: React.FC = () => {
               <AudioOutput
                 isGenerating={isGenerating}
                 hasOutput={hasOutput}
-                outputText={inputText}
+                outputText={modifiedText || inputText}
+                audioUrl={audioOutputUrl}
               />
             </div>
           </div>
@@ -155,7 +178,7 @@ const Echoid: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center space-y-2">
             <p className="text-gray-600 font-handwritten text-lg">
-              Made with ❤️ for emotional expression
+              Made with 🖤 by <a href="https://linkedin.com/in/aradhyeswarup" target="_blank" rel="noopener noreferrer"><img src="./main.png" alt="main" className="center inline-block w-8 h-8 hover:scale-110 transition-all duration-300 drop-shadow-sm" /></a>
             </p>
             <p className="text-sm text-gray-500">
               Echoid - Where technology meets human emotion

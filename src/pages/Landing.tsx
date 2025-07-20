@@ -185,7 +185,7 @@ const Landing = () => {
               <span className="text-2xl font-handwritten font-bold text-gray-800">Echoid</span>
             </div>
             <p className="text-gray-600 font-handwritten text-lg">
-              Made with ❤️ for emotional expression
+              Made with 🖤 by <a href="https://linkedin.com/in/aradhyeswarup" target="_blank" rel="noopener noreferrer"><img src="./main.png" alt="main" className="center inline-block w-8 h-8 hover:scale-110 transition-all duration-300 drop-shadow-sm" /></a>
             </p>
             <p className="text-sm text-gray-500">
               Where technology meets human emotion

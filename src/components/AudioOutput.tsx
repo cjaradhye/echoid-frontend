@@ -1,25 +1,45 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Play, Pause, Download, Volume2 } from 'lucide-react';
 
 interface AudioOutputProps {
   isGenerating: boolean;
   hasOutput: boolean;
   outputText: string;
+  audioUrl?: string;
 }
 
-const AudioOutput: React.FC<AudioOutputProps> = ({ isGenerating, hasOutput, outputText }) => {
+const AudioOutput: React.FC<AudioOutputProps> = ({ isGenerating, hasOutput, outputText, audioUrl }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.addEventListener('ended', () => setIsPlaying(false));
+      audioRef.current.addEventListener('pause', () => setIsPlaying(false));
+      audioRef.current.addEventListener('play', () => setIsPlaying(true));
+    }
+  }, []);
 
   const handlePlayPause = () => {
-    setIsPlaying(!isPlaying);
-    // Here you would implement actual audio playback
-    console.log('Play/Pause audio');
+    if (!audioRef.current || !audioUrl) return;
+    
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
   };
 
   const handleDownload = () => {
-    // Here you would implement audio download
-    console.log('Download audio');
+    if (!audioUrl) return;
+    
+    const link = document.createElement('a');
+    link.href = audioUrl;
+    link.download = 'echoid-output.wav';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   if (isGenerating) {
@@ -54,6 +74,11 @@ const AudioOutput: React.FC<AudioOutputProps> = ({ isGenerating, hasOutput, outp
 
   return (
     <div className="w-full bg-echoid-mint rounded-3xl p-8">
+      {/* Hidden audio element */}
+      {audioUrl && (
+        <audio ref={audioRef} src={audioUrl} preload="metadata" />
+      )}
+      
       <div className="flex flex-col space-y-6">
         {/* Waveform visualization placeholder */}
         <div className="flex items-center justify-center h-24 bg-white/50 rounded-2xl">

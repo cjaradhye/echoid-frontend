@@ -59,6 +59,26 @@
 Make sure the FastAPI backend is running. Clone and run it from:
 ➡️ [`echoid-backend`](https://github.com/YOUR_USERNAME/echoid-backend)
 
+## 🔑 Environment Setup
+
+Create a `.env` file in the root directory with the following variables:
+
+```bash
+# Backend URL (optional, defaults to http://localhost:8000)
+VITE_BACKEND_URL=http://localhost:8000
+
+# Gemini API Key (required for emotion text modification)
+# Get your API key from: https://makersuite.google.com/app/apikey
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+### Getting a Gemini API Key
+
+1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Sign in with your Google account
+3. Click "Create API Key"
+4. Copy the generated key and paste it in your `.env` file
+
 ---
 
 ## 🧠 Folder Structure
@@ -80,9 +100,11 @@ echoid-frontend/
 
 ## ✅ TODO
 
-* [ ] Add Emotion Selector UI
-* [ ] Connect frontend with API
-* [ ] Add loading states and feedback
+* [x] Add Emotion Selector UI
+* [x] Connect frontend with API
+* [x] Add loading states and feedback
+* [x] Integrate Gemini API for emotion text modification
+* [x] Connect to FastAPI backend at /docs/generate endpoint
 * [ ] Deploy on Vercel
 
 ---
