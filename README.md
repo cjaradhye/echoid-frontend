@@ -57,7 +57,7 @@
 ## 🌐 Backend Setup
 
 Make sure the FastAPI backend is running. Clone and run it from:
-➡️ [`echoid-backend`](https://github.com/YOUR_USERNAME/echoid-backend)
+➡️ [`echoid-backend`](https://github.com/cjaradhye/echoid-backend)
 
 ## 🔑 Environment Setup
 
